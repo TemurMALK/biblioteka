@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kitoblar</title>
+</head>
+<body>
+  <h1>Hamma Kitoblar</h1>
+  <br>
+  <br>
+  <form method="get"   action="/kitoblar/">
+        <input type="text" name="soz" placeholder="Search">
+        <button type="submit">Search</button>
+  </form>
+  <br>
+  <br>
+  {% for kitob in kitoblar %}
+    <h3>{{ kitob.id }}. <a href="/kitob/{{kitob.id}}/">{{kitob.nom}}</a></h3>
+    <button><a href="/kitob_ochir/{{kitob.id}}/">Delete</a></button>
+    <button><a href="/kitoblar/{{kitob.id}}/">Edit</a></button>
+  {%endfor%}
+  <br>
+  <br>
+  <form action="/kitoblar/" method="post">{% csrf_token %}
+      {{form.as_p}}
+      <button type="submit">ADD</button>
+  </form>
+  <br>
+  <br>
+  <a href="/logout/"><button>Logout</button></a>
+</body>
+</html>

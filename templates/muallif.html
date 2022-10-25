@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mualliflar</title>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <h1>Mualliflar</h1>
+    <br>
+    <form method="get" action="/mualliflar/">
+        <input type="text" name="soz" placeholder="Qidirish">
+        <button type="submit">Qidirish</button>
+    </form>
+    <br>
+    {% for muallif in mualliflar %}
+    <h3>{{ muallif.id }}. <a href="/muallif/{{muallif.id}}/">{{muallif.ism}}</a> ({{ muallif.kitoblar_soni}})</h3>
+    <button><a href="/muallif_ochir/{{muallif.id}}">O'chirish</a></button>
+    <button><a href="/mualliflar/{{muallif.id}}">Edit</a></button>
+    {% endfor %}
+    <br>
+    <br>
+    <form method="post" action="/mualliflar/">{% csrf_token %}
+        {{forma.as_p}}
+        <button type="submit">Qo'shish</button>
+    </form>
+    <br>
+    <br>
+    <br>
+</body>
+</html>

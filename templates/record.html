@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Record</title>
+</head>
+<body>
+    <h1>Recordlar</h1>
+    <br>
+    {% for record in records %}
+    <h3>{{ record.id }}. <a href="/record/{{record.id}}/">{{record.student}}</a> ({{ record.kitob}})</h3>
+<!--    <button><a href="/muallif_ochir/{{record.id}}">O'chirish</a></button>-->
+    {% endfor %}
+    <br>
+    <br>
+    <br>
+    <form method="post" action="/recordlar/">{% csrf_token %}
+         {{f.as_p}}
+         <button type="submit">Qo'shish</button>
+     </form>
+</body>
+</html>

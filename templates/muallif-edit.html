@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Muallifni o'zgartiring</title>
+</head>
+<body>
+<br>
+<br>
+<h1>Muallifni o'zgartiring</h1>
+<br>
+<br>
+<br>
+<hr>
+  <form action="/mualliflar/{{muallif.id}}/" method="post">{% csrf_token %}
+      <input type="text" name="i" value="{{muallif.ism}}">
+      <select name="j">
+          <option value="{{muallif.jins}}">{{muallif.jins}}</option>
+      </select>
+<!--      input type="" name="j" value="{{muallif.jins}}"><-->
+      <input type="text" name="g" value="{{muallif.tugilgan_yil}}">
+      {% if muallif.tirik %}
+      <input type="checkbox" name="t" checked>
+      {% else %}
+      <input type="checkbox" name="t">
+      {% endif %}
+      <input type="number" name="k_s" value="{{muallif.kitoblar_soni}}">
+      <button type="submit">Edit</button>
+  </form>
+</body>
+</html>

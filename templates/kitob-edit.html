@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kitobni o'zgartiring</title>
+</head>
+<body>
+<br>
+<br>
+<h1>Kitobni o'zgartiring</h1>
+<br>
+<br>
+<br>
+<hr>
+  <form action="/kitoblar/{{kitob.id}}/" method="post">{% csrf_token %}
+      <input type="text" name="n" value="{{kitob.nom}}">
+      <select name="j">
+          <option value="{{kitob.janr}}">{{kitob.janr}}</option>
+      </select>
+      <input type="number" name="s" value="{{kitob.sahifa}}">
+      <input type="text" name="m" value="{{kitob.muallif}}">
+      <button type="submit">Edit</button>
+  </form>
+</body>
+</html>
